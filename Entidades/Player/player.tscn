@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bw5qm3r7c4na2"]
+
+[ext_resource type="Script" uid="uid://cp5cupxbow0mm" path="res://Entidades/Player/player.gd" id="1_r4t8p"]
+[ext_resource type="Script" uid="uid://x5jep311d07n" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="2_se6kk"]
+[ext_resource type="Script" uid="uid://cxo01xfiagfm3" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="3_gg5sm"]
+[ext_resource type="Script" uid="uid://b4l10ufxqd2mb" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="5_7j72c"]
+[ext_resource type="Script" uid="uid://7aosicm7x6c4" path="res://addons/shaker/src/Vector3/ShakerReceiver3D.gd" id="6_n23so"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2m9w"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x7n3q"]
+
+[sub_resource type="Resource" id="Resource_7j72c"]
+script = ExtResource("5_7j72c")
+metadata/_custom_type_script = "uid://b4l10ufxqd2mb"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7j72c"]
+
+[node name="Player" type="CharacterBody3D" unique_id=664071878]
+collision_mask = 3
+script = ExtResource("1_r4t8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2130364482]
+shape = SubResource("CapsuleShape3D_k2m9w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=795442810]
+mesh = SubResource("CapsuleMesh_x7n3q")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=412970223]
+transform = Transform3D(1, 1.1920929e-07, -2.3841858e-07, -1.1920929e-07, 1, 0, 2.3841858e-07, 2.842171e-14, 1, -5.5879354e-09, 0.7999999, -9.685755e-08)
+
+[node name="EfeitoDeAndar" type="Node3D" parent="." unique_id=519148636 node_paths=PackedStringArray("Targets")]
+script = ExtResource("2_se6kk")
+custom_target = true
+Targets = [NodePath("../Camera3D")]
+AutoPlay = true
+intensity = 0.3
+metadata/_custom_type_script = "uid://x5jep311d07n"
+
+[node name="ReceptorDeEfeito" type="Node3D" parent="." unique_id=789666154 node_paths=PackedStringArray("Targets")]
+script = ExtResource("2_se6kk")
+custom_target = true
+Targets = [NodePath("../Camera3D")]
+AutoPlay = true
+shakerPreset = SubResource("Resource_7j72c")
+metadata/_custom_type_script = "uid://x5jep311d07n"
+
+[node name="ShakerReceiver3D" type="Node3D" parent="ReceptorDeEfeito" unique_id=1365966401]
+script = ExtResource("6_n23so")
+metadata/_custom_type_script = "uid://7aosicm7x6c4"
+
+[node name="Area3D" type="Area3D" parent="ReceptorDeEfeito/ShakerReceiver3D" unique_id=1514209850]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ReceptorDeEfeito/ShakerReceiver3D/Area3D" unique_id=519147744]
+shape = SubResource("SphereShape3D_7j72c")

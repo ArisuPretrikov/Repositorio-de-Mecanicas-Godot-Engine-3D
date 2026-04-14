@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cjlpnysr65hmh"]
+
+[ext_resource type="Texture2D" uid="uid://c8uhnukrb42p8" path="res://Mapa/Tiles107_1K-JPG_Color.jpg" id="1_pnyps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hjpdm"]
+albedo_color = Color(0.70796657, 0.7079665, 0.7079665, 1)
+albedo_texture = ExtResource("1_pnyps")
+uv1_scale = Vector3(0.13, 0.13, 0.13)
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_cylrr"]
+material = SubResource("StandardMaterial3D_hjpdm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pnyps"]
+
+[node name="Bloco" type="Node3D" unique_id=167024379]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=626700433]
+mesh = SubResource("BoxMesh_cylrr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1286874977]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=641422664]
+shape = SubResource("BoxShape3D_pnyps")

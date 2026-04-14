@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dy62iuvvdua3w"]
+
+[ext_resource type="Shader" uid="uid://b1057trslu8eg" path="res://Entidades/EntidadeGlitch/EntidadeGlitch.gdshader" id="1_vvehh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04x6b"]
+render_priority = 0
+shader = ExtResource("1_vvehh")
+shader_parameter/shake_power = 0.5
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_882v6"]
+
+[node name="EntidadeGlitch" type="Node3D" unique_id=1192152262]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=60292834]
+material_override = SubResource("ShaderMaterial_04x6b")
+mesh = SubResource("BoxMesh_882v6")
