@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bw5qm3r7c4na2"]
 
 [ext_resource type="Script" uid="uid://cp5cupxbow0mm" path="res://components/player/player.gd" id="1_r4t8p"]
+[ext_resource type="Shader" uid="uid://bgjv1glcj766y" path="res://shared/shaders/screen_effect.gdshader" id="2_fwwnh"]
 [ext_resource type="Texture2D" uid="uid://bemqx0imwnyxu" path="res://components/player/Model/PlayerModel_0.png" id="2_lu46o"]
 [ext_resource type="Script" uid="uid://x5jep311d07n" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="2_se6kk"]
 [ext_resource type="Script" uid="uid://cxo01xfiagfm3" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="3_gg5sm"]
@@ -13,6 +14,11 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2m9w"]
 radius = 0.5390625
 height = 2.3222656
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxcs8"]
+shader = ExtResource("2_fwwnh")
+shader_parameter/invert = 0.0
+shader_parameter/saturation = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eh4x0"]
 resource_name = "material_0"
@@ -3684,8 +3690,8 @@ JumpParticles = NodePath("JumpParticles")
 ray_interact = NodePath("Body/RayCastInteract")
 ray_climb = NodePath("Body/RayCastClimb")
 climb_start_jump = 10.0
-camera1p = NodePath("HeadPivot/Camera1P")
-camera3p = NodePath("HeadPivot/Camera1P/Camera3P")
+camera1p = NodePath("HeadPivot/SubViewportContainer/SubViewport/Camera1P")
+camera3p = NodePath("HeadPivot/SubViewportContainer/SubViewport/Camera1P/Camera3P")
 head_pivot = NodePath("HeadPivot")
 animation_tree = NodePath("Body/AnimationTree")
 body_follow_speed = 10.0
@@ -3704,20 +3710,35 @@ remote_path = NodePath("../../Body/Origin/Pelvis2/Belly2/Chest2/Head2/Head")
 update_position = false
 update_scale = false
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="HeadPivot" unique_id=703411364]
+[node name="RemoteCamera" type="RemoteTransform3D" parent="HeadPivot" unique_id=44735853]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-remote_path = NodePath("../Camera1P")
-use_global_coordinates = false
+remote_path = NodePath("../SubViewportContainer/SubViewport/Camera1P")
 update_position = false
 update_scale = false
 
-[node name="Camera1P" type="Camera3D" parent="HeadPivot" unique_id=412970223]
-transform = Transform3D(-1.0000002, -1.0680441e-09, -8.7416275e-08, 0, 0.9999254, -0.012216998, 8.74228e-08, -0.012217001, -0.9999256, 6.66134e-16, 0.08208585, -0.014027193)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HeadPivot" unique_id=1840400946]
+material = SubResource("ShaderMaterial_vxcs8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="HeadPivot/SubViewportContainer" unique_id=598147932]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera1P" type="Camera3D" parent="HeadPivot/SubViewportContainer/SubViewport" unique_id=412970223]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.661338e-16, 1.0879588, 0.012041793)
 current = true
 fov = 100.0
 near = 0.4
 
-[node name="Camera3P" type="Camera3D" parent="HeadPivot/Camera1P" unique_id=1703933721]
+[node name="Camera3P" type="Camera3D" parent="HeadPivot/SubViewportContainer/SubViewport/Camera1P" unique_id=1703933721]
 transform = Transform3D(1, -4.3013498e-15, -7.770746e-15, 6.555654e-15, 0.9477461, 0.31902552, 5.992454e-15, -0.31902552, 0.9477461, 8.7380725e-10, 0.6947134, 2.2538188)
 
 [node name="Body" type="Node3D" parent="." unique_id=398808408]
@@ -3750,12 +3771,12 @@ mesh = SubResource("ArrayMesh_ha8vd")
 transform = Transform3D(0.9999576, 0, 0, 0, 0.9999907, 0, 0, 0, 0.9999525, 9.313188e-09, 1.5463607, 0.11261928)
 
 [node name="Head" type="MeshInstance3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/Head2" unique_id=425234237]
-transform = Transform3D(1.0000024, 0, 0, 0, 0.9999952, 0, 0, 0, 1.0000014, -9.313581e-09, 1.2316718, 0.05220641)
+transform = Transform3D(1.000006, 0, 0, 0, 0.99874216, 0.050034147, 0, -0.05003746, 0.99875224, -9.313581e-09, 1.2316737, 0.052206263)
 mesh = SubResource("ArrayMesh_rx87n")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/Head2/Head" unique_id=1134922413]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99990356, 0.013882658, 0, -0.013883562, 0.9999038, 0, -0.010909796, -0.006947588)
-remote_path = NodePath("../../../../../../../../HeadPivot/Camera1P")
+remote_path = NodePath("../../../../../../../../HeadPivot/SubViewportContainer/SubViewport/Camera1P")
 update_rotation = false
 update_scale = false
 
@@ -3827,7 +3848,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9063581, 1.1621231, 0.12882376)
 
 [node name="R-Arm2" type="Node3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/R-Shoulder" unique_id=616288471]
-transform = Transform3D(0.9887674, 0.08651748, -0.121865176, -0.087166786, 0.9961924, 3.1134111e-06, 0.12140144, 0.010619518, 0.9925466, 0, 0, 0)
+transform = Transform3D(0.9887673, 0.086517476, -0.121865176, -0.08716678, 0.99619234, 3.1134111e-06, 0.12140143, 0.010619517, 0.9925466, 0, 0, 0)
 
 [node name="R-Arm" type="MeshInstance3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/R-Shoulder/R-Arm2" unique_id=2120303367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, -0.5, 0)
@@ -3857,7 +3878,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0625, 0.125, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9063581, 1.1621231, 0.12882376)
 
 [node name="L-Arm2" type="Node3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/L-Shoulder" unique_id=1696181784]
-transform = Transform3D(0.9887674, -0.086517476, 0.12186518, 0.087166786, 0.99619234, 3.1134114e-06, -0.12140144, 0.010619517, 0.9925467, 0, 0, 0)
+transform = Transform3D(0.9887673, -0.08651747, 0.12186518, 0.08716678, 0.9961923, 3.1134114e-06, -0.12140143, 0.010619517, 0.9925467, 0, 0, 0)
 
 [node name="L-Arm" type="MeshInstance3D" parent="Body/Origin/Pelvis2/Belly2/Chest2/L-Shoulder/L-Arm2" unique_id=608575337]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0625, -0.5, 0)
@@ -3965,7 +3986,7 @@ collide_with_areas = true
 [node name="EfeitoDeAndar" type="Node3D" parent="." unique_id=519148636 node_paths=PackedStringArray("Targets")]
 script = ExtResource("2_se6kk")
 custom_target = true
-Targets = [NodePath("../HeadPivot/Camera1P")]
+Targets = [NodePath("../HeadPivot/SubViewportContainer/SubViewport/Camera1P")]
 AutoPlay = true
 intensity = 0.3
 metadata/_custom_type_script = "uid://x5jep311d07n"
@@ -3973,7 +3994,7 @@ metadata/_custom_type_script = "uid://x5jep311d07n"
 [node name="ReceptorDeEfeito" type="Node3D" parent="." unique_id=789666154 node_paths=PackedStringArray("Targets")]
 script = ExtResource("2_se6kk")
 custom_target = true
-Targets = [NodePath("../HeadPivot/Camera1P")]
+Targets = [NodePath("../HeadPivot/SubViewportContainer/SubViewport/Camera1P")]
 AutoPlay = true
 shakerPreset = SubResource("Resource_7j72c")
 metadata/_custom_type_script = "uid://x5jep311d07n"

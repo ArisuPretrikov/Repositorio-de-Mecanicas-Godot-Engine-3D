@@ -2585,6 +2585,7 @@ collision_layer = 8
 collision_mask = 7
 script = ExtResource("2_horse")
 animation_tree = NodePath("blockbench_export/AnimationTree")
+ability_duration = 5.0
 pivot = NodePath("Pivot")
 
 [node name="Pivot" type="Marker3D" parent="." unique_id=256713601]
@@ -2596,20 +2597,20 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="Origin" type="Node3D" parent="blockbench_export" unique_id=1240721275]
 
 [node name="Pelvis2" type="Node3D" parent="blockbench_export/Origin" unique_id=1049115090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8021476, -0.9375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8139837, -0.9375)
 
 [node name="Pelvis" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2" unique_id=1671945798]
 mesh = SubResource("ArrayMesh_8xrv2")
 
 [node name="Tail3" type="Node3D" parent="blockbench_export/Origin/Pelvis2" unique_id=1088182832]
-transform = Transform3D(0.99995583, 0.008418263, -0.0040745432, 0.0009496096, 0.3420234, 0.9396908, 0.009304152, -0.9396536, 0.34200042, 0, 0.5625, -0.8125)
+transform = Transform3D(0.9992262, -0.03539276, 0.017130539, -0.0039924295, 0.3420901, 0.9396585, -0.039117295, -0.9390001, 0.34168428, 0, 0.5625, -0.8125)
 
 [node name="Tail" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Tail3" unique_id=354734669]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4375)
 mesh = SubResource("ArrayMesh_gf7pp")
 
 [node name="Tail22" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Tail3" unique_id=401630975]
-transform = Transform3D(0.9977444, -0.031883202, 0.05906871, 0.0670966, 0.4989298, -0.8640411, -0.0019227411, 0.8660554, 0.49994388, 0, 0, -0.8125)
+transform = Transform3D(0.99801505, 0.007810427, -0.062485848, -0.058019504, 0.49977374, -0.8642105, 0.024478942, 0.8661205, 0.49923512, 0, 0, -0.8125)
 
 [node name="Tail2" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Tail3/Tail22" unique_id=1231398482]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4375, 0)
@@ -2632,7 +2633,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.625)
 mesh = SubResource("ArrayMesh_nrqjm")
 
 [node name="Neck2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2" unique_id=1484417178]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.84484464, -0.5350111, 0, 0.5350111, 0.84484464, 0, 0, 1)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.86506885, -0.5016525, 0, 0.5016525, 0.86506885, 0, 0, 1)
 
 [node name="Neck" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2" unique_id=1880748954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8125, 0)
@@ -2646,7 +2647,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3125, 0, 0)
 mesh = SubResource("ArrayMesh_h5wco")
 
 [node name="Head2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2" unique_id=1349320171]
-transform = Transform3D(1, 0, 0, 0, 0.9569026, 0.29040807, 0, -0.29040807, 0.9569026, 0, 1.6875, 0.03125)
+transform = Transform3D(1, 0, 0, 0, 0.9398781, 0.34150925, 0, -0.34150925, 0.9398781, 0, 1.6875, 0.03125)
 
 [node name="Head" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2" unique_id=1496823666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
@@ -2667,7 +2668,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1875)
 mesh = SubResource("ArrayMesh_jxwqx")
 
 [node name="Jaw2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/Snout2" unique_id=388016206]
-transform = Transform3D(1, 0, 0, 0, 0.9930118, -0.11801279, 0, 0.118012786, 0.99301183, 0, -0.34375, 0.5625)
+transform = Transform3D(1, 0, 0, 0, 0.9983613, -0.057219952, 0, 0.05721995, 0.99836135, 0, -0.34375, 0.5625)
 
 [node name="Jaw" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/Snout2/Jaw2" unique_id=502435201]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1875)
@@ -2680,14 +2681,14 @@ transform = Transform3D(0.25881904, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 mesh = SubResource("ArrayMesh_eejsi")
 
 [node name="L-Ear2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2" unique_id=621723674]
-transform = Transform3D(0.37501088, -0.13832645, 0.91664195, -0.018113766, 0.9875224, 0.15643328, -0.9268433, -0.075268045, 0.3678261, 0.5625, 0.8125, -0.375)
+transform = Transform3D(0.45620853, -0.10821009, 0.8832691, -0.023843184, 0.99073625, 0.13369097, -0.8895533, -0.08205093, 0.44940224, 0.5625, 0.8125, -0.375)
 
 [node name="L-Ear" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/L-Ear2" unique_id=49629687]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3125, 0.25, 0)
 mesh = SubResource("ArrayMesh_tk20y")
 
 [node name="R-Ear2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2" unique_id=40758432]
-transform = Transform3D(0.3755187, 0.14501917, -0.9153987, 0.017707255, 0.98637974, 0.16352803, 0.9266453, -0.07761707, 0.36783624, -0.5625, 0.8125, -0.375)
+transform = Transform3D(0.4572474, 0.11449162, -0.88193876, 0.022706404, 0.9898524, 0.14027302, 0.88904923, -0.08416518, 0.45000783, -0.5625, 0.8125, -0.375)
 
 [node name="R-Ear" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/R-Ear2" unique_id=796188754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 0.25, 0)
@@ -2700,7 +2701,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5125, 0.46875, 0.2625)
 mesh = SubResource("ArrayMesh_cavt3")
 
 [node name="L-Eyelid2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2" unique_id=252601790]
-transform = Transform3D(1, 0, -1.509958e-07, 0, -0.03582394, 0, 1.509958e-07, 0, 1, 0.525, 0.7823695, 0.30625)
+transform = Transform3D(1, 0, -1.509958e-07, 0, 0.17757785, 0, 1.509958e-07, 0, 1, 0.525, 0.7757007, 0.30625)
 
 [node name="L-Eyelid" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/L-Eyelid2" unique_id=1726751695]
 mesh = SubResource("ArrayMesh_wxq2h")
@@ -2718,7 +2719,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5125, 0.46875, 0.2625)
 mesh = SubResource("ArrayMesh_utt02")
 
 [node name="R-Eyelid2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2" unique_id=704764532]
-transform = Transform3D(1, 0, -1.509958e-07, 0, -0.03582394, 0, 1.509958e-07, 0, 1, -0.525, 0.7823695, 0.30625)
+transform = Transform3D(1, 0, -1.509958e-07, 0, 0.17757785, 0, 1.509958e-07, 0, 1, -0.525, 0.7757007, 0.30625)
 
 [node name="R-Eyelid" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/Neck2/Head2/R-Eyelid2" unique_id=1162385484]
 mesh = SubResource("ArrayMesh_vb3xf")
@@ -2731,7 +2732,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3125, 0, 0)
 mesh = SubResource("ArrayMesh_8jt7m")
 
 [node name="L-Arm2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2" unique_id=818198770]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4375, -0.28807852, 1.0624957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4375, -0.30291584, 1.0624983)
 
 [node name="L-Arm" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/L-Arm2" unique_id=717458550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
@@ -2755,7 +2756,7 @@ mesh = SubResource("ArrayMesh_vgnql")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.25, 0.125)
 
 [node name="R-Arm2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2" unique_id=350250986]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.2880786, 1.0624958)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4375, -0.30291587, 1.0624983)
 
 [node name="R-Arm" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/Belly/Chest2/R-Arm2" unique_id=1177798423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.625, 0)
@@ -2779,14 +2780,14 @@ mesh = SubResource("ArrayMesh_x2dby")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, -0.25, 0.125)
 
 [node name="L-Thigh2" type="Node3D" parent="blockbench_export/Origin/Pelvis2" unique_id=1337897488]
-transform = Transform3D(1, -5.231459e-07, -3.2803985e-06, 1.1871298e-06, 0.9785886, 0.2058238, 3.1024877e-06, -0.2058238, 0.9785886, 0.4375, 0.0022522686, -0.26571754)
+transform = Transform3D(1, -2.7299112e-07, -1.6253814e-06, 5.762705e-07, 0.9818538, 0.1896371, 1.544119e-06, -0.1896371, 0.9818538, 0.4375, 0.00088389823, -0.2561683)
 
 [node name="L-Thigh" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/L-Thigh2" unique_id=1794288470]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 mesh = SubResource("ArrayMesh_l17s5")
 
 [node name="L-Calf2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/L-Thigh2" unique_id=357789824]
-transform = Transform3D(0.9999999, -5.351801e-07, 5.51105e-06, 5.140755e-06, 0.45947984, -0.88818777, -2.0568766e-06, 0.88818777, 0.45947984, 0, -1, 0.125)
+transform = Transform3D(0.9999999, -2.9734505e-07, 2.7311396e-06, 2.53864e-06, 0.48002428, -0.87725466, -1.050167e-06, 0.87725466, 0.48002428, 0, -1, 0.125)
 
 [node name="L-Calf" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/L-Thigh2/L-Calf2" unique_id=886125286]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4375, 0)
@@ -2800,21 +2801,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5625, 0)
 mesh = SubResource("ArrayMesh_2wa3n")
 
 [node name="L-Foot2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/L-Thigh2/L-Calf2/L-Leg2" unique_id=2072232027]
-transform = Transform3D(0.99999994, -3.0719139e-06, -1.6841951e-06, 2.7555213e-06, 0.9865667, -0.1633582, 2.1633937e-06, 0.16335823, 0.9865666, 0, -1.0625, 0)
+transform = Transform3D(0.99999994, -1.5303856e-06, -8.3383674e-07, 1.3679677e-06, 0.98569614, -0.16853145, 1.079828e-06, 0.16853148, 0.985696, 0, -1.0625, 0)
 
 [node name="L-Foot" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/L-Thigh2/L-Calf2/L-Leg2/L-Foot2" unique_id=824380996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1875, 0.0625)
 mesh = SubResource("ArrayMesh_ppce3")
 
 [node name="R-Thigh2" type="Node3D" parent="blockbench_export/Origin/Pelvis2" unique_id=1091706472]
-transform = Transform3D(1, 8.7192194e-07, 5.4673264e-06, -1.9785548e-06, 0.978589, 0.20582277, -5.170807e-06, -0.20582277, 0.978589, -0.4375, 0, -0.2613997)
+transform = Transform3D(1, 4.5499257e-07, 2.7089643e-06, -9.604556e-07, 0.98185396, 0.18963657, -2.573526e-06, -0.18963657, 0.98185396, -0.4375, 0, -0.2544802)
 
 [node name="R-Thigh" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/R-Thigh2" unique_id=1613052047]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375, 0)
 mesh = SubResource("ArrayMesh_sf71p")
 
 [node name="R-Calf2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/R-Thigh2" unique_id=17838535]
-transform = Transform3D(1, -1.1078463e-06, 4.5658508e-06, 4.5658508e-06, 0.45829433, -0.8888003, -1.10785e-06, 0.8888003, 0.45829433, 0, -1, 0.125)
+transform = Transform3D(1, -5.7676414e-07, 2.2587028e-06, 2.2587021e-06, 0.47944373, -0.8775724, -5.767688e-07, 0.8775724, 0.47944373, 0, -1, 0.125)
 
 [node name="R-Calf" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/R-Thigh2/R-Calf2" unique_id=1935776358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4375, 0)
@@ -2828,7 +2829,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5625, 0)
 mesh = SubResource("ArrayMesh_w34o0")
 
 [node name="R-Foot2" type="Node3D" parent="blockbench_export/Origin/Pelvis2/R-Thigh2/R-Calf2/R-Leg2" unique_id=1145309434]
-transform = Transform3D(1, 2.2796612e-06, 6.0441675e-06, -1.2616524e-06, 0.986566, -0.16336147, -6.3353823e-06, 0.16336147, 0.986566, 0, -1.0625, 0)
+transform = Transform3D(1, 1.1452288e-06, 3.0125334e-06, -6.2118335e-07, 0.9856982, -0.16851832, -3.1624427e-06, 0.16851832, 0.9856982, 0, -1.0625, 0)
 
 [node name="R-Foot" type="MeshInstance3D" parent="blockbench_export/Origin/Pelvis2/R-Thigh2/R-Calf2/R-Leg2/R-Foot2" unique_id=662348571]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1875, 0.0625)

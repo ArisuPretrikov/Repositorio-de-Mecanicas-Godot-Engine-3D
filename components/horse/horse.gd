@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const ABILITY_SOUND := preload("res://assets/sound/zaowlrd.ogg")
+
 # ── Movimentação ──────────────────────────────────────────────────────────────
 
 @export_group("Movimentacao")
@@ -27,6 +29,21 @@ extends CharacterBody3D
 ## Velocidade de interpolação dos blends de animação.
 @export var anim_blend_speed: float = 8.0
 
+# ── Habilidade (Time Stop) ───────────────────────────────────────────────────
+
+@export_group("Habilidade")
+## Duração da habilidade ability1: pausa o mundo, exceto player + cavalo.
+@export var ability_duration: float = 3.0
+## Cooldown após a habilidade desativar.
+@export var ability_cooldown: float = 5.0
+## Material com o shader de screen effect (invert + saturation).
+## Se null, é detectado automaticamente buscando por screen_effect.gdshader na cena.
+@export var screen_shader_mat: ShaderMaterial
+## Velocidade do lerp ao ENTRAR na habilidade (invert→1, saturation→0).
+@export var ability_in_speed: float = 4.0
+## Velocidade do lerp ao SAIR da habilidade (invert→0, saturation→1).
+@export var ability_out_speed: float = 2.0
+
 # ── Pivot ─────────────────────────────────────────────────────────────────────
 
 @export_group("Pivot")
@@ -42,6 +59,19 @@ var is_moving := false
 ## True quando o cavalo está correndo (W + Shift).
 var is_running := false
 
+## True quando a habilidade ability1 está ativa (mundo pausado).
+var _ability_active := false
+## Wall-time (segundos) em que a habilidade ativa expira.
+var _ability_active_until: float = 0.0
+## Wall-time (segundos) em que o cooldown da habilidade termina.
+var _ability_cooldown_until: float = 0.0
+## Pares [ShaderMaterial, valor_original] de shake_rate salvos durante a habilidade.
+var _saved_shake_rates: Array = []
+## Blend atual da habilidade (0=normal, 1=ativa). Lerpado no _process.
+var _ability_blend: float = 0.0
+## AudioStreamPlayer criado no _ready pra tocar o som da habilidade.
+var _ability_sfx: AudioStreamPlayer
+
 var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
@@ -52,6 +82,50 @@ func _ready() -> void:
 		animation_tree = find_child("AnimationTree", true, false) as AnimationTree
 	if animation_tree:
 		animation_tree.active = true
+	# Localiza o ShaderMaterial de screen effect depois que a cena carregar inteira.
+	call_deferred("_locate_screen_shader_mat")
+	# Cria o AudioStreamPlayer pra habilidade. PROCESS_MODE_ALWAYS garante que
+	# continue tocando mesmo com a árvore pausada durante a habilidade.
+	_ability_sfx = AudioStreamPlayer.new()
+	_ability_sfx.stream = ABILITY_SOUND
+	_ability_sfx.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_ability_sfx)
+
+
+func _process(delta: float) -> void:
+	# Lerpa _ability_blend rumo ao alvo (1 ativo, 0 inativo) e aplica nos shaders.
+	var target := 1.0 if _ability_active else 0.0
+	if _ability_blend == target and target == 0.0:
+		return  # já normalizado, nada a fazer
+	var spd := ability_in_speed if _ability_active else ability_out_speed
+	_ability_blend = lerpf(_ability_blend, target, clampf(delta * spd, 0.0, 1.0))
+	if absf(_ability_blend - target) < 0.001:
+		_ability_blend = target  # snap ao alvo quando muito perto
+	if screen_shader_mat:
+		screen_shader_mat.set_shader_parameter("invert", _ability_blend)
+		screen_shader_mat.set_shader_parameter("saturation", 1.0 - _ability_blend)
+
+
+## Procura na árvore um ShaderMaterial cujo Shader é o screen_effect.gdshader.
+func _locate_screen_shader_mat() -> void:
+	if screen_shader_mat:
+		return
+	screen_shader_mat = _find_screen_shader_mat(get_tree().get_root())
+
+
+func _find_screen_shader_mat(node: Node) -> ShaderMaterial:
+	if node is CanvasItem:
+		var ci := node as CanvasItem
+		var mat = ci.material
+		if mat is ShaderMaterial:
+			var sm := mat as ShaderMaterial
+			if sm.shader and sm.shader.resource_path.ends_with("screen_effect.gdshader"):
+				return sm
+	for child in node.get_children():
+		var found := _find_screen_shader_mat(child)
+		if found:
+			return found
+	return null
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -66,8 +140,96 @@ func get_pivot_global_transform() -> Transform3D:
 
 
 ## Define o cavaleiro atual (ou null para desmontar).
+## Se a habilidade estiver ativa e o player desmontar, ela é desativada e o
+## cooldown começa imediatamente.
 func set_rider(new_rider: Node3D) -> void:
+	if _ability_active and rider != null and new_rider == null:
+		_deactivate_ability()
 	rider = new_rider
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Habilidade ability1: Time Stop
+# ─────────────────────────────────────────────────────────────────────────────
+
+## Tenta ativar a habilidade. Falha se: já ativa, em cooldown, ou sem cavaleiro.
+func _try_activate_ability() -> void:
+	if _ability_active:
+		return
+	if rider == null:
+		return
+	var now := Time.get_ticks_msec() / 1000.0
+	if now < _ability_cooldown_until:
+		return
+
+	_ability_active = true
+	_ability_active_until = now + ability_duration
+
+	# Pausa o SceneTree (todos os nós com PROCESS_MODE_INHERIT/PAUSABLE param).
+	# O cavalo + rider passam a PROCESS_MODE_ALWAYS pra continuar processando.
+	get_tree().paused = true
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	if rider:
+		rider.process_mode = Node.PROCESS_MODE_ALWAYS
+
+	# Zera o shake_rate de qualquer ShaderMaterial na cena (efeito glitch para).
+	_saved_shake_rates.clear()
+	_collect_and_zero_shake_rate(get_tree().get_root())
+
+	# Garante que o material de screen effect está localizado.
+	_locate_screen_shader_mat()
+
+	# Toca o sound effect da habilidade.
+	if _ability_sfx:
+		_ability_sfx.play()
+
+
+## Desativa a habilidade e inicia o cooldown.
+func _deactivate_ability() -> void:
+	if not _ability_active:
+		return
+	_ability_active = false
+	_ability_cooldown_until = Time.get_ticks_msec() / 1000.0 + ability_cooldown
+
+	# Despausa e devolve modos de processamento ao default (inheritado).
+	get_tree().paused = false
+	process_mode = Node.PROCESS_MODE_INHERIT
+	if rider:
+		rider.process_mode = Node.PROCESS_MODE_INHERIT
+
+	# Restaura os shake_rate salvos.
+	for entry in _saved_shake_rates:
+		var sm: ShaderMaterial = entry[0]
+		if is_instance_valid(sm):
+			sm.set_shader_parameter("shake_rate", entry[1])
+	_saved_shake_rates.clear()
+
+
+## Percorre a árvore a partir de `node` e, para cada ShaderMaterial encontrado
+## que tenha shake_rate definido, salva o valor original em _saved_shake_rates
+## e zera. Cobre material_override, material_overlay e surface_override de
+## MeshInstance3D, além de material em mesh quando tiver.
+func _collect_and_zero_shake_rate(node: Node) -> void:
+	if node is MeshInstance3D:
+		var mi := node as MeshInstance3D
+		_try_zero_shader_mat(mi.material_override)
+		_try_zero_shader_mat(mi.material_overlay)
+		for i in range(mi.get_surface_override_material_count()):
+			_try_zero_shader_mat(mi.get_surface_override_material(i))
+	for child in node.get_children():
+		_collect_and_zero_shake_rate(child)
+
+
+## Se `mat` é ShaderMaterial e tem shake_rate setado, salva e zera.
+func _try_zero_shader_mat(mat) -> void:
+	if mat == null or not (mat is ShaderMaterial):
+		return
+	var sm := mat as ShaderMaterial
+	var current = sm.get_shader_parameter("shake_rate")
+	if current == null:
+		return
+	_saved_shake_rates.append([sm, current])
+	sm.set_shader_parameter("shake_rate", 0.0)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -75,7 +237,15 @@ func set_rider(new_rider: Node3D) -> void:
 # ─────────────────────────────────────────────────────────────────────────────
 
 ## Aplica gravidade, lê input do cavaleiro (se houver) e move o cavalo.
+## Também processa habilidade ability1: ativa/desativa e checa expiração por tempo real.
 func tick_movement(delta: float) -> void:
+	# Habilidade Time Stop: usa wall-time pra contar mesmo com a árvore pausada.
+	var now := Time.get_ticks_msec() / 1000.0
+	if _ability_active and now >= _ability_active_until:
+		_deactivate_ability()
+	if rider != null and Input.is_action_just_pressed("ability1"):
+		_try_activate_ability()
+
 	if not is_on_floor():
 		velocity.y -= _gravity * delta
 
