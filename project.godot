@@ -27,12 +27,11 @@ enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://add
 [file_customization]
 
 folder_colors={
-"res://Demos/": "pink",
-"res://Entidades/": "purple",
-"res://Entidades/Player/": "purple",
-"res://Main/": "green",
-"res://Mapa/": "blue",
-"res://addons/": "gray"
+"res://addons/": "gray",
+"res://assets/": "red",
+"res://components/": "purple",
+"res://demos/": "pink",
+"res://shared/": "green"
 }
 
 [input]

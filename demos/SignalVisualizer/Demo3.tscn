@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dtlyxmwytc8u6"]
+
+[ext_resource type="Script" uid="uid://dk3nyhjqbe2b1" path="res://demos/SignalVisualizer/Demo3.gd" id="1_2jtwt"]
+
+[node name="Demo3" type="Node2D" unique_id=2117701924]
+script = ExtResource("1_2jtwt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1738420615]
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1665958476]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=507718708]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
