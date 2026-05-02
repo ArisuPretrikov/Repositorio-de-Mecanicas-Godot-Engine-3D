@@ -1,0 +1,29 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://dh1xfm4q8r2pk"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_8kmcg"]
+
+[sub_resource type="BBNode" id="BBNode_h_movement"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_h_movement"]
+node = SubResource("BBNode_h_movement")
+method = &"tick_movement"
+args_include_delta = true
+
+[sub_resource type="BBNode" id="BBNode_h_animation"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_h_animation"]
+node = SubResource("BBNode_h_animation")
+method = &"tick_animation"
+args_include_delta = true
+
+[sub_resource type="BTSequence" id="BTSequence_h_main"]
+custom_name = "Main"
+children = [SubResource("BTCallMethod_h_movement"), SubResource("BTCallMethod_h_animation")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_8kmcg")
+root_task = SubResource("BTSequence_h_main")

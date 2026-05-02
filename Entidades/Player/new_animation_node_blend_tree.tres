@@ -1,0 +1,129 @@
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://8c726lwwl5kv"]
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_6rudw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ywkj"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lu46o"]
+animation = &"Climb_Idle"
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_3cbwv"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_77mda"]
+animation = &"Climb_Left"
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_k3w05"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f6mbm"]
+animation = &"Climb_Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bf3fc"]
+animation = &"Climb_Up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vfn5h"]
+animation = &"Crouch"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_xlcme"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ewg5t"]
+animation = &"Crouch_Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fall_normal"]
+animation = &"Fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hurt"]
+animation = &"Hurt"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_hurt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7mjue"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hssyg"]
+animation = &"Jump"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_mount_selector"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mount_idle"]
+animation = &"Mount_Idle"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_mount_idle_walk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mount_run"]
+animation = &"Mount_Run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mount_walk"]
+animation = &"Mount_Walk"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_mount_walk_run"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7xcco"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_speed"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5k0vi"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_wkfall"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_j6ehn"]
+
+[resource]
+graph_offset = Vector2(424.56943, 106.326355)
+nodes/output/position = Vector2(2320, -53.333332)
+nodes/Walk/node = SubResource("AnimationNodeAnimation_5k0vi")
+nodes/Walk/position = Vector2(-853.3333, 373.33334)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_7mjue")
+nodes/Idle/position = Vector2(-853.3333, 213.33333)
+nodes/Walk_Idle/node = SubResource("AnimationNodeBlend2_j6ehn")
+nodes/Walk_Idle/position = Vector2(-613.3333, 240)
+nodes/Climb_Crouch_Walk/node = SubResource("AnimationNodeBlend3_6rudw")
+nodes/Climb_Crouch_Walk/position = Vector2(53.333332, -53.333332)
+nodes/Crouch/node = SubResource("AnimationNodeAnimation_vfn5h")
+nodes/Crouch/position = Vector2(-613.3333, -213.33333)
+nodes/Crouch_Walk/node = SubResource("AnimationNodeAnimation_ewg5t")
+nodes/Crouch_Walk/position = Vector2(-613.3333, -53.333332)
+nodes/Crouch_Idle/node = SubResource("AnimationNodeBlend2_xlcme")
+nodes/Crouch_Idle/position = Vector2(-373.33334, -186.66667)
+nodes/Climb_Up/node = SubResource("AnimationNodeAnimation_bf3fc")
+nodes/Climb_Up/position = Vector2(-800, -853.3333)
+nodes/Climb_Idle/node = SubResource("AnimationNodeAnimation_lu46o")
+nodes/Climb_Idle/position = Vector2(-586.6667, -1120)
+nodes/Climb_R_Up_L/node = SubResource("AnimationNodeBlend3_k3w05")
+nodes/Climb_R_Up_L/position = Vector2(-586.6667, -880)
+nodes/Jump/node = SubResource("AnimationNodeAnimation_hssyg")
+nodes/Jump/position = Vector2(-426.66666, 400)
+nodes/Climb_Fall/node = SubResource("AnimationNodeAnimation_3ywkj")
+nodes/Climb_Fall/position = Vector2(-586.6667, -586.6667)
+nodes/Climb_Right/node = SubResource("AnimationNodeAnimation_f6mbm")
+nodes/Climb_Right/position = Vector2(-800, -1040)
+nodes/Climb_Left/node = SubResource("AnimationNodeAnimation_77mda")
+nodes/Climb_Left/position = Vector2(-800, -693.3333)
+nodes/Climb_Idle_All_Fall/node = SubResource("AnimationNodeBlend3_3cbwv")
+nodes/Climb_Idle_All_Fall/position = Vector2(-346.66666, -826.6667)
+nodes/ShotJump/node = SubResource("AnimationNodeOneShot_7xcco")
+nodes/ShotJump/position = Vector2(-240, 133.33333)
+nodes/WalkFall/node = SubResource("AnimationNodeBlend2_wkfall")
+nodes/WalkFall/position = Vector2(346.66666, -53.333332)
+nodes/Fall_Normal/node = SubResource("AnimationNodeAnimation_fall_normal")
+nodes/Fall_Normal/position = Vector2(-80, 320)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_speed")
+nodes/TimeScale/position = Vector2(2080, -53.333332)
+nodes/Mount_Idle/node = SubResource("AnimationNodeAnimation_mount_idle")
+nodes/Mount_Idle/position = Vector2(160, 480)
+nodes/Mount_Walk/node = SubResource("AnimationNodeAnimation_mount_walk")
+nodes/Mount_Walk/position = Vector2(160, 580)
+nodes/Mount_Run/node = SubResource("AnimationNodeAnimation_mount_run")
+nodes/Mount_Run/position = Vector2(160, 680)
+nodes/Mount_Walk_Run/node = SubResource("AnimationNodeBlend2_mount_walk_run")
+nodes/Mount_Walk_Run/position = Vector2(400, 600)
+nodes/Mount_Idle_Walk/node = SubResource("AnimationNodeBlend2_mount_idle_walk")
+nodes/Mount_Idle_Walk/position = Vector2(640, 520)
+nodes/MountSelector/node = SubResource("AnimationNodeBlend2_mount_selector")
+nodes/MountSelector/position = Vector2(880, 186.66667)
+nodes/HurtShot/node = SubResource("AnimationNodeOneShot_hurt")
+nodes/HurtShot/position = Vector2(1840, -26.666666)
+nodes/Hurt/node = SubResource("AnimationNodeAnimation_hurt")
+nodes/Hurt/position = Vector2(1386.6666, 346.66666)
+node_connections = [&"output", 0, &"TimeScale", &"Walk_Idle", 0, &"Idle", &"Walk_Idle", 1, &"Walk", &"Climb_Crouch_Walk", 0, &"Climb_Idle_All_Fall", &"Climb_Crouch_Walk", 1, &"Crouch_Idle", &"Climb_Crouch_Walk", 2, &"ShotJump", &"Crouch_Idle", 0, &"Crouch", &"Crouch_Idle", 1, &"Crouch_Walk", &"Climb_R_Up_L", 0, &"Climb_Right", &"Climb_R_Up_L", 1, &"Climb_Up", &"Climb_R_Up_L", 2, &"Climb_Left", &"Climb_Idle_All_Fall", 0, &"Climb_Idle", &"Climb_Idle_All_Fall", 1, &"Climb_R_Up_L", &"Climb_Idle_All_Fall", 2, &"Climb_Fall", &"ShotJump", 0, &"Walk_Idle", &"ShotJump", 1, &"Jump", &"WalkFall", 0, &"Climb_Crouch_Walk", &"WalkFall", 1, &"Fall_Normal", &"TimeScale", 0, &"HurtShot", &"Mount_Walk_Run", 0, &"Mount_Walk", &"Mount_Walk_Run", 1, &"Mount_Run", &"Mount_Idle_Walk", 0, &"Mount_Idle", &"Mount_Idle_Walk", 1, &"Mount_Walk_Run", &"MountSelector", 0, &"WalkFall", &"MountSelector", 1, &"Mount_Idle_Walk", &"HurtShot", 0, &"MountSelector", &"HurtShot", 1, &"Hurt"]

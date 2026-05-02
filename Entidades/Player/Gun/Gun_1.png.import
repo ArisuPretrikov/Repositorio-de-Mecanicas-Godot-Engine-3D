@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnuwdituorxct"
-path.s3tc="res://.godot/imported/Player_With_Face_0.png-473fc59c57733c160ddd7b99b92133aa.s3tc.ctex"
+uid="uid://cuj4lh4f8q7cr"
+path.s3tc="res://.godot/imported/Gun_1.png-fcc71a85a827431ad727ab89b30b0a45.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b268a6ae9dbad300133181719ed57a15"
+"md5": "f1d3ff8443297732862df21dc4e57262"
 }
 
 [deps]
 
-source_file="res://Entidades/Player/Model/Player_With_Face_0.png"
-dest_files=["res://.godot/imported/Player_With_Face_0.png-473fc59c57733c160ddd7b99b92133aa.s3tc.ctex"]
+source_file="res://Entidades/Player/Gun/Gun_1.png"
+dest_files=["res://.godot/imported/Gun_1.png-fcc71a85a827431ad727ab89b30b0a45.s3tc.ctex"]
 
 [params]
 

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cxo01xfiagfm3" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="9_o60nc"]
 [ext_resource type="Script" uid="uid://bp4n46thkihq7" path="res://addons/shaker/data/Vector3/ShakerTypeSawtoothWave3D.gd" id="10_o60nc"]
 [ext_resource type="Script" uid="uid://b4l10ufxqd2mb" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="11_rix8b"]
+[ext_resource type="PackedScene" uid="uid://blw4d46c8u038" path="res://Entidades/Horse/Horse.tscn" id="12_f3gf5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eunhr"]
 shader = ExtResource("1_qvhan")
@@ -77,7 +78,7 @@ RotationShake = Array[ExtResource("9_o60nc")]([SubResource("Resource_0jx5h")])
 metadata/_custom_type_script = "uid://b4l10ufxqd2mb"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_o60nc"]
-radius = 10.0
+radius = 4.841
 
 [node name="Main" type="Node3D" unique_id=2095733653]
 
@@ -88,8 +89,9 @@ directional_shadow_mode = 0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1452479203]
 environment = SubResource("Environment_liyct")
 
-[node name="Player" parent="." unique_id=1004323738 instance=ExtResource("1_player")]
+[node name="Player" parent="." unique_id=664071878 instance=ExtResource("1_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.34643, 0)
+collision_mask = 3
 
 [node name="Mapa" parent="." unique_id=210853515 instance=ExtResource("2_2w1kt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -126,3 +128,6 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShakerEmitter3D/Area3D" unique_id=2076798128]
 shape = SubResource("SphereShape3D_o60nc")
 debug_color = Color(0.9372549, 0, 0.24705882, 1)
+
+[node name="Horse" parent="." unique_id=2025368359 instance=ExtResource("12_f3gf5")]
+transform = Transform3D(0.031689823, 0, -0.9994977, 0, 1, 0, 0.9994977, 0, 0.031689823, 1.0332867, 0.022055514, -3.0305529)

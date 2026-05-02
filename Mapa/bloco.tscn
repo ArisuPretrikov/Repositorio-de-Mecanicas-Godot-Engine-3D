@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_hjpdm")
 mesh = SubResource("BoxMesh_cylrr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1286874977]
-collision_layer = 2
+collision_layer = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=641422664]
 shape = SubResource("BoxShape3D_pnyps")

@@ -1,0 +1,129 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://dylsex8by7hqw"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_n23so"]
+var/Climb/name = &"Climb"
+var/Climb/type = 1
+var/Climb/value = false
+var/Climb/hint = 0
+var/Climb/hint_string = ""
+binding/Climb = NodePath(".:climb")
+
+[sub_resource type="BBVariant" id="BBVariant_n23so"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_7j72c"]
+variable = &"Climb"
+value = SubResource("BBVariant_n23so")
+
+[sub_resource type="BBNode" id="BBNode_n23so"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_7j72c"]
+node = SubResource("BBNode_n23so")
+method = &"movement_climb"
+
+[sub_resource type="BTSequence" id="BTSequence_n23so"]
+custom_name = "Climb"
+children = [SubResource("BTCheckVar_7j72c"), SubResource("BTCallMethod_7j72c")]
+
+[sub_resource type="BBNode" id="BBNode_vfn5h"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_xlcme"]
+node = SubResource("BBNode_vfn5h")
+method = &"movement_walk"
+args_include_delta = true
+
+[sub_resource type="BTSequence" id="BTSequence_7j72c"]
+custom_name = "Walk"
+children = [SubResource("BTCallMethod_xlcme")]
+
+[sub_resource type="BTSelector" id="BTSelector_n23so"]
+children = [SubResource("BTSequence_n23so"), SubResource("BTSequence_7j72c")]
+
+[sub_resource type="BBNode" id="BBNode_7mjue"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_5k0vi"]
+node = SubResource("BBNode_7mjue")
+method = &"state_update_moving"
+
+[sub_resource type="BBNode" id="BBNode_7j72c"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_lu46o"]
+node = SubResource("BBNode_7j72c")
+method = &"state_update_crouch"
+
+[sub_resource type="BBNode" id="BBNode_bf3fc"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_vfn5h"]
+node = SubResource("BBNode_bf3fc")
+method = &"state_update_climb_toggle"
+
+[sub_resource type="BTSequence" id="BTSequence_j6ehn"]
+custom_name = "Current_Action"
+children = [SubResource("BTCallMethod_5k0vi"), SubResource("BTCallMethod_lu46o"), SubResource("BTCallMethod_vfn5h")]
+
+[sub_resource type="BBNode" id="BBNode_stmna"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_stmna"]
+node = SubResource("BBNode_stmna")
+method = &"state_update_stamina"
+args_include_delta = true
+
+[sub_resource type="BBNode" id="BBNode_exhst"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_exhst"]
+node = SubResource("BBNode_exhst")
+method = &"state_update_exhaustion"
+
+[sub_resource type="BBNode" id="BBNode_bdypv"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_bdypv"]
+node = SubResource("BBNode_bdypv")
+method = &"state_update_body_pivot"
+args_include_delta = true
+
+[sub_resource type="BBNode" id="BBNode_lu46o"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_bf3fc"]
+node = SubResource("BBNode_lu46o")
+method = &"state_update_pose"
+
+[sub_resource type="BBNode" id="BBNode_xlcme"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_6rudw"]
+node = SubResource("BBNode_xlcme")
+method = &"state_update_animation"
+args_include_delta = true
+
+[sub_resource type="BTSequence" id="BTSequence_x6xcl"]
+custom_name = "States"
+children = [SubResource("BTCallMethod_stmna"), SubResource("BTCallMethod_exhst"), SubResource("BTCallMethod_bdypv"), SubResource("BTCallMethod_bf3fc"), SubResource("BTCallMethod_6rudw")]
+
+[sub_resource type="BTSequence" id="BTSequence_lu46o"]
+custom_name = "Main"
+children = [SubResource("BTSelector_n23so"), SubResource("BTSequence_j6ehn"), SubResource("BTSequence_x6xcl")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_n23so")
+root_task = SubResource("BTSequence_lu46o")

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c0k3si54rmiuh"
-path="res://.godot/imported/Player_With_Face.glb-c32104f0b941be1f59206287068bf10b.scn"
+uid="uid://ci3qjpss3an0q"
+path="res://.godot/imported/Gun.gltf-9f17a4914e956043670e0602c7fa5d45.scn"
 
 [deps]
 
-source_file="res://Entidades/Player/Model/Player_With_Face.glb"
-dest_files=["res://.godot/imported/Player_With_Face.glb-c32104f0b941be1f59206287068bf10b.scn"]
+source_file="res://Entidades/Player/Gun/Gun.gltf"
+dest_files=["res://.godot/imported/Gun.gltf-9f17a4914e956043670e0602c7fa5d45.scn"]
 
 [params]
 

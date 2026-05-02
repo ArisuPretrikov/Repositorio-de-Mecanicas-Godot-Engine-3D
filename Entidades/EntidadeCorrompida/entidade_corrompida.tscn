@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://l48bgkyu4nai"]
 
-[sub_resource type="Curve" id="Curve_alpha"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8vqi"]
+render_priority = 10
+depth_draw_mode = 2
+shading_mode = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_xaxua"]
+
+[sub_resource type="Curve" id="Curve_cm7vk"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4621027, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_cm7vk"]
-curve = SubResource("Curve_alpha")
+[sub_resource type="CurveTexture" id="CurveTexture_w7rdq"]
+curve = SubResource("Curve_cm7vk")
 
-[sub_resource type="Curve" id="Curve_cm7vk"]
+[sub_resource type="Curve" id="Curve_b8vqi"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_b8vqi"]
-curve = SubResource("Curve_cm7vk")
+[sub_resource type="CurveTexture" id="CurveTexture_p2fyv"]
+curve = SubResource("Curve_b8vqi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6uokf"]
 direction = Vector3(0, 0, 0)
@@ -21,15 +28,15 @@ initial_velocity_min = 0.5
 initial_velocity_max = 0.5
 gravity = Vector3(0, 0, 0)
 scale_min = 0.099999994
-scale_curve = SubResource("CurveTexture_b8vqi")
+scale_curve = SubResource("CurveTexture_p2fyv")
 color = Color(0, 0, 0, 1)
-alpha_curve = SubResource("CurveTexture_cm7vk")
+alpha_curve = SubResource("CurveTexture_w7rdq")
 turbulence_enabled = true
 turbulence_influence_min = 0.0
 turbulence_influence_max = 0.0
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uokf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dqcy5"]
 render_priority = -10
 transparency = 1
 shading_mode = 0
@@ -42,18 +49,15 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_xaxua"]
-material = SubResource("StandardMaterial3D_6uokf")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8vqi"]
-render_priority = 10
-depth_draw_mode = 2
-shading_mode = 0
-
-[sub_resource type="BoxMesh" id="BoxMesh_xaxua"]
+material = SubResource("StandardMaterial3D_dqcy5")
 
 [node name="EntidadeCorrompida" type="Node3D" unique_id=218077358]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=774610084]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1699718153]
+material_override = SubResource("StandardMaterial3D_b8vqi")
+mesh = SubResource("BoxMesh_xaxua")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1704561031]
 amount = 500
 lifetime = 8.0
 randomness = 1.0
@@ -62,7 +66,3 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_6uokf")
 draw_pass_1 = SubResource("QuadMesh_xaxua")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1699718153]
-material_override = SubResource("StandardMaterial3D_b8vqi")
-mesh = SubResource("BoxMesh_xaxua")
