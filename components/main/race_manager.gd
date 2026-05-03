@@ -39,6 +39,13 @@ func _process(delta: float) -> void:
 
 # ── Conexão ───────────────────────────────────────────────────────────────────
 
+func reset() -> void:
+	_lap      = 0
+	_passed   = {}
+	_started  = false
+	_finished = false
+	_time     = 0.0
+
 func _connect_checkpoints() -> void:
 	var container := get_node_or_null(checkpoints_node)
 	if not container:

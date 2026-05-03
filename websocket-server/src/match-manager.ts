@@ -100,6 +100,9 @@ export class MatchManager {
       case 'ping':
         this.send(playerId, { type: 'pong' });
         break;
+      case 'position_update':
+        this.handlePositionUpdate(player, msg.x, msg.y, msg.z, msg.ry);
+        break;
     }
   }
 
@@ -236,6 +239,18 @@ export class MatchManager {
     this.removeFromAllSpectate(player.id);
     player.state = 'idle';
     player.matchId = null;
+  }
+
+  private handlePositionUpdate(player: Player, x: number, y: number, z: number, ry: number): void {
+    if (player.state !== 'racing' || !player.matchId) return;
+    const match = this.matches.get(player.matchId);
+    if (!match || match.state !== 'racing') return;
+    if (!isFinite(x) || !isFinite(y) || !isFinite(z) || !isFinite(ry)) return;
+    if (Math.abs(x) > 10_000 || Math.abs(y) > 10_000 || Math.abs(z) > 10_000) return;
+    const opponentId = this.getOpponentId(match, player.id);
+    if (opponentId) {
+      this.send(opponentId, { type: 'opponent_position', x, y, z, ry });
+    }
   }
 
   private handleCheckpointPassed(player: Player, checkpointIndex: number): void {

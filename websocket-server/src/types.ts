@@ -204,6 +204,14 @@ export interface SrvPong {
   type: 'pong';
 }
 
+export interface SrvOpponentPosition {
+  type: 'opponent_position';
+  x: number;
+  y: number;
+  z: number;
+  ry: number;
+}
+
 export type ServerMessage =
   | SrvAssigned
   | SrvQueued
@@ -218,4 +226,5 @@ export type ServerMessage =
   | SrvSpectateEvent
   | SrvLobbyList
   | SrvError
-  | SrvPong;
+  | SrvPong
+  | SrvOpponentPosition;

@@ -131,7 +131,7 @@ wss.on('connection', (ws: WebSocket) => {
 
     const validTypes = new Set([
       'quick_join','create_lobby','join_lobby','spectate','leave_spectate',
-      'checkpoint_passed','lap_completed','race_finished','ping',
+      'checkpoint_passed','lap_completed','race_finished','ping','position_update',
     ]);
     const m = msg as Record<string, unknown>;
     if (!validTypes.has(m['type'] as string)) {

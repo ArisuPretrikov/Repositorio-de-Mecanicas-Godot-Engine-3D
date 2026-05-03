@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://blw4d46c8u038" path="res://components/horse/Horse.tscn" id="8_4q0cu"]
 [ext_resource type="Script" uid="uid://tusaad5yj3xc" path="res://components/main/race_manager.gd" id="9_25a7v"]
 [ext_resource type="Script" uid="uid://2hdfxokwaffr" path="res://components/main/network_manager.gd" id="10_40ejt"]
+[ext_resource type="Script" uid="uid://c5y7ssrgvhpfl" path="res://components/main/main_pista.gd" id="11_main"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eunhr"]
 shader = ExtResource("1_ji3lx")
@@ -60,6 +61,7 @@ albedo_color = Color(1, 0.3019608, 0.27058825, 1)
 material = SubResource("StandardMaterial3D_0jx5h")
 
 [node name="Main" type="Node3D" unique_id=2095733653]
+script = ExtResource("11_main")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=714338630]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
@@ -69,7 +71,7 @@ directional_shadow_mode = 0
 environment = SubResource("Environment_liyct")
 
 [node name="Player" parent="." unique_id=664071878 instance=ExtResource("2_40ejt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.038, 0.436, -37.66)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.222, 0.5, 9)
 collision_mask = 3
 
 [node name="Mapa" parent="." unique_id=210853515 instance=ExtResource("3_3b6yx")]
@@ -97,8 +99,8 @@ visible = false
 mesh = SubResource("BoxMesh_uhr2j")
 
 [node name="Horse" parent="." unique_id=2025368359 instance=ExtResource("8_4q0cu")]
-transform = Transform3D(0.031689823, 0, -0.9994977, 0, 1, 0, 0.9994977, 0, 0.031689823, 47.038, 0.436, -37.66)
-walk_speed = 5.0
+transform = Transform3D(0.031689823, 0, -0.9994977, 0, 1, 0, 0.9994977, 0, 0.031689823, 89.222, 0.5, 9)
+walk_speed = 22.0
 run_speed = 11.0
 
 [node name="RaceManager" type="Node3D" parent="." unique_id=449281637]

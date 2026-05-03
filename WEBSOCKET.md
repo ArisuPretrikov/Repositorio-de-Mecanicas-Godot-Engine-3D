@@ -108,11 +108,11 @@ O servidor mantém um `Map<id, Match>` independente por partida. Cada par de jog
 
 ```
 lobby / queued
-      ↓  (ambos conectados)
+	  ↓  (ambos conectados)
    racing
-      ↓  (ambos enviam race_finished OU um desconecta)
+	  ↓  (ambos enviam race_finished OU um desconecta)
    finished  ←  match_end enviado para jogadores + espectadores
-      ↓  (5 segundos)
+	  ↓  (5 segundos)
    [removida do servidor]
 ```
 
@@ -223,9 +223,9 @@ Abra `http://localhost:8080/game/` no navegador.
 websocket-server/client/
 ├── index.html         ← cliente HTML de lobby
 └── game/
-    ├── index.html     ← jogo Godot exportado
-    ├── index.js
-    ├── index.wasm
-    ├── index.pck
-    └── index.worker.js
+	├── index.html     ← jogo Godot exportado
+	├── index.js
+	├── index.wasm
+	├── index.pck
+	└── index.worker.js
 ```
