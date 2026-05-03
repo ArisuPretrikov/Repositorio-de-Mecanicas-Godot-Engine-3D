@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d1hsp220xbsuh" path="res://components/entidade_tudo/entidade_tudo.tscn" id="7_deisp"]
 [ext_resource type="PackedScene" uid="uid://blw4d46c8u038" path="res://components/horse/Horse.tscn" id="8_4q0cu"]
 [ext_resource type="Script" uid="uid://tusaad5yj3xc" path="res://components/main/race_manager.gd" id="9_25a7v"]
+[ext_resource type="Script" uid="uid://2hdfxokwaffr" path="res://components/main/network_manager.gd" id="10_40ejt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eunhr"]
 shader = ExtResource("1_ji3lx")
@@ -104,5 +105,10 @@ run_speed = 11.0
 script = ExtResource("9_25a7v")
 checkpoints_node = NodePath("../Mapa/Checkpoints")
 horse_node = NodePath("../Horse")
+
+[node name="NetworkManager" type="Node3D" parent="." unique_id=570605786]
+script = ExtResource("10_40ejt")
+race_manager_path = NodePath("../RaceManager")
+horse_path = NodePath("../Horse")
 
 [editable path="Mapa"]

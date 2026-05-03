@@ -2,6 +2,7 @@ extends Node
 
 signal lap_completed(lap: int, total: int)
 signal race_finished(final_time: float)
+signal checkpoint_passed(index: int)
 
 const TOTAL_LAPS := 3
 
@@ -80,6 +81,7 @@ func _handle(idx: int, cp_name: String) -> void:
 			return
 
 	_passed[idx] = true
+	emit_signal("checkpoint_passed", idx)
 	print("[Race] %s ✓  (%d/%d)" % [cp_name, _passed.size(), LAST_INDEX])
 
 func _handle_start_finish() -> void:
