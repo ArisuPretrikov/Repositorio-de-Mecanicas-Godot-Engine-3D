@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cjlpnysr65hmh"]
+
+[ext_resource type="Script" uid="uid://ddojjfxvos7mh" path="res://components/lucky_block/lucky_block.gd" id="1_8ljih"]
+[ext_resource type="Texture2D" uid="uid://br0ilgjaqrqq" path="res://components/lucky_block/lucky-block-texture.png" id="1_y7lrf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdp6g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ljih"]
+albedo_texture = ExtResource("1_y7lrf")
+rim_enabled = true
+rim = 0.3
+rim_tint = 1.0
+uv1_scale = Vector3(2.985, 2.135, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jlno4"]
+material = SubResource("StandardMaterial3D_8ljih")
+
+[node name="LuckyBlock" type="Node3D" unique_id=2017986566]
+script = ExtResource("1_8ljih")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=268698480]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1452437548]
+shape = SubResource("BoxShape3D_sdp6g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=953694092]
+mesh = SubResource("BoxMesh_jlno4")
