@@ -28,22 +28,27 @@ func spawn_all() -> void:
 			_spawn_at(child as Marker3D, space)
 
 func _spawn_at(marker: Marker3D, space: PhysicsDirectSpaceState3D) -> void:
-	var origin := marker.global_position + Vector3(0, ray_length * 0.5, 0)
-	var target := marker.global_position - Vector3(0, ray_length * 0.5, 0)
-
-	var query := PhysicsRayQueryParameters3D.create(origin, target)
-	query.collision_mask = LAYER_PISTA_MASK
-	query.collide_with_areas = false
-
-	var hit := space.intersect_ray(query)
-
 	var spawn_pos: Vector3
-	if hit:
-		spawn_pos = hit["position"] + Vector3(0, height_above_ground, 0)
-	else:
-		# Sem pista detectada — usa a posição do Marker como fallback
-		push_warning("[LuckyBlockSpawner] Sem pista sob '%s', usando posição do Marker." % marker.name)
+
+	if marker.get_meta("override_y", false):
+		# Y manual: usa exatamente a posição do Marker
 		spawn_pos = marker.global_position
+	else:
+		# Y automático: detecta a superfície da pista por raycast
+		var origin := marker.global_position + Vector3(0, ray_length * 0.5, 0)
+		var target := marker.global_position - Vector3(0, ray_length * 0.5, 0)
+
+		var query := PhysicsRayQueryParameters3D.create(origin, target)
+		query.collision_mask = LAYER_PISTA_MASK
+		query.collide_with_areas = false
+
+		var hit := space.intersect_ray(query)
+
+		if hit:
+			spawn_pos = hit["position"] + Vector3(0, height_above_ground, 0)
+		else:
+			push_warning("[LuckyBlockSpawner] Sem pista sob '%s', usando posição do Marker." % marker.name)
+			spawn_pos = marker.global_position
 
 	var block := _scene.instantiate() as Node3D
 	get_parent().add_child(block)

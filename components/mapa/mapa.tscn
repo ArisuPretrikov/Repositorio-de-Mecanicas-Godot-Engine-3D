@@ -162,33 +162,171 @@ shape = SubResource("CapsuleShape3D_8gs3f")
 
 [node name="LuckyBlocks" type="Node3D" parent="." unique_id=1553534908]
 
-[node name="gp_01" type="Node3D" parent="LuckyBlocks" unique_id=1793102958]
-script = ExtResource("3_8gs3f")
-
-[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=994189672]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
-
-[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=529325617]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
-
-[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=185614923]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
-
-[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=1510046837]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
-
-[node name="gp_02" type="Node3D" parent="LuckyBlocks" unique_id=2060536697]
+[node name="gp_01" type="Node3D" parent="LuckyBlocks" unique_id=2060536697]
 transform = Transform3D(0.66543883, 0, 0.7464524, 0, 1, 0, -0.7464524, 0, 0.66543883, 64.42679, 0, -61.635178)
 script = ExtResource("3_8gs3f")
 
-[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=1990951209]
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=1990951209]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
 
-[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=406815746]
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=406815746]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
 
-[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=1281234700]
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=1281234700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
 
-[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=875008819]
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_01" unique_id=875008819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_02" type="Node3D" parent="LuckyBlocks" unique_id=1793102958]
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=994189672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=529325617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=185614923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_02" unique_id=1510046837]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_03" type="Node3D" parent="LuckyBlocks" unique_id=620395477]
+transform = Transform3D(-0.16139719, 0, 0.98688954, 0, 1, 0, -0.98688954, 0, -0.16139719, -71.15112, 0, 76.20899)
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_03" unique_id=1131954771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_03" unique_id=753219124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_03" unique_id=1727949434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_03" unique_id=473602647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_03_1" type="Node3D" parent="LuckyBlocks" unique_id=1269735605]
+transform = Transform3D(0.7911595, 0, 0.6116099, 0, 1, 0, -0.6116099, 0, 0.7911595, -61.235783, 0, -31.416418)
+script = ExtResource("3_8gs3f")
+height_above_ground = 6.7
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_03_1" unique_id=104392367]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345, 6.7, -1.757)
+
+[node name="gp_04" type="Node3D" parent="LuckyBlocks" unique_id=1855563892]
+transform = Transform3D(-0.9825965, 0, 0.18575224, 0, 1, 0, -0.18575224, 0, -0.9825965, -137.41228, 0, -0.8721466)
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_04" unique_id=1780670295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_04" unique_id=833070426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_04" unique_id=1011301460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_04" unique_id=669194465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_05" type="Node3D" parent="LuckyBlocks" unique_id=912740431]
+transform = Transform3D(-0.9527092, 0, 0.30388328, 0, 1, 0, -0.30388328, 0, -0.9527092, -114.752, -3, -88.233)
+script = ExtResource("3_8gs3f")
+height_above_ground = -3.0
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_05" unique_id=928114814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_05" unique_id=431351532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_05" unique_id=53643513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_05" unique_id=225668073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_06" type="Node3D" parent="LuckyBlocks" unique_id=233504830]
+transform = Transform3D(-0.58372545, 0, 0.81195104, 0, 1, 0, -0.81195104, 0, -0.58372545, -45.24672, 0, -207.77153)
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_06" unique_id=380626103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_06" unique_id=1821550842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_06" unique_id=328854883]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_06" unique_id=2119046613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_06_1" type="Node3D" parent="LuckyBlocks" unique_id=1935930590]
+transform = Transform3D(0.013822585, 0, 0.9999044, 0, 1, 0, -0.9999044, 0, 0.013822585, -8.942251, 8.642904, -157.45757)
+script = ExtResource("3_8gs3f")
+height_above_ground = 8.6
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_06_1" unique_id=1135968346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="gp_07" type="Node3D" parent="LuckyBlocks" unique_id=1396628217]
+transform = Transform3D(0.43954724, 0, 0.89821935, 0, 1, 0, -0.89821935, 0, 0.43954724, 127.654144, 13.211462, -195.59853)
+script = ExtResource("3_8gs3f")
+height_above_ground = 13.2
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_07" unique_id=422472996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_07" unique_id=1816869037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_07" unique_id=249768769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_07" unique_id=69022121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_08" type="Node3D" parent="LuckyBlocks" unique_id=943432113]
+transform = Transform3D(0.9122783, 0.0054279477, 0.40953496, -0.004951871, 0.9999853, -0.0022229669, -0.409541, 0, 0.91229177, 243.423, 11.8, -87.032)
+script = ExtResource("3_8gs3f")
+height_above_ground = 11.8
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_08" unique_id=454861112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_08" unique_id=640882132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_08" unique_id=262051350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_08" unique_id=185064600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
+
+[node name="gp_08_1" type="Node3D" parent="LuckyBlocks" unique_id=430414581]
+transform = Transform3D(0.97489744, 0, 0.2226547, 0, 1, 0, -0.2226547, 0, 0.97489744, 193.94781, 0, -68.01288)
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_08_1" unique_id=1429526041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345306, 0.5001087, -1.7573776)
+
+[node name="gp_09" type="Node3D" parent="LuckyBlocks" unique_id=1172099619]
+transform = Transform3D(0.51382583, 0, 0.8578946, 0, 1, 0, -0.8578946, 0, 0.51382583, 124.58758, 0, -6.4558563)
+script = ExtResource("3_8gs3f")
+
+[node name="Marker3D_01" type="Marker3D" parent="LuckyBlocks/gp_09" unique_id=1276475204]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.345303, 0, -1.7573738)
+
+[node name="Marker3D_02" type="Marker3D" parent="LuckyBlocks/gp_09" unique_id=1094816538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.19715, 0, -1.7573738)
+
+[node name="Marker3D_03" type="Marker3D" parent="LuckyBlocks/gp_09" unique_id=1325355174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.016586, 0, -1.7573738)
+
+[node name="Marker3D_04" type="Marker3D" parent="LuckyBlocks/gp_09" unique_id=1467434587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.581394, 0, -1.7573738)
