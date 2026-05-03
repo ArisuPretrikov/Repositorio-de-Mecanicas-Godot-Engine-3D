@@ -1,0 +1,21 @@
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://c1ff8tn5oesa6"]
+
+[sub_resource type="Gradient" id="Gradient_uvot0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x1kby"]
+noise_type = 2
+frequency = 0.0014
+fractal_type = 0
+cellular_jitter = 0.0
+cellular_return_type = 0
+domain_warp_amplitude = 47.365
+domain_warp_frequency = 5.61
+domain_warp_fractal_octaves = 10
+domain_warp_fractal_lacunarity = 7.465
+domain_warp_fractal_gain = 2.99
+
+[resource]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_x1kby")
+color_ramp = SubResource("Gradient_uvot0")
